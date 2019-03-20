@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.suse.zack.mapper.MindMapper">
+
+    <!--添加新文章-->
+    <insert id="addNewMind" parameterType="Mind">
+        INSERT INTO blog_mind
+        VALUES (#{mind_id,jdbcType=CHAR},
+                #{mind_content,jdbcType=VARCHAR},
+                #{mind_date,jdbcType=TIMESTAMP},
+                #{mind_look,jdbcType=TINYINT},
+                #{mind_picture,jdbcType=CHAR}
+                )
+    </insert>
+
+    <select id="findTenMind" resultType="Mind">
+        SELECT *
+        FROM blog_mind
+        ORDER BY mind_date DESC
+        LIMIT 10
+    </select>
+
+
+</mapper>

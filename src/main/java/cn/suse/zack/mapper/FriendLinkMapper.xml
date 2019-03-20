@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.suse.zack.mapper.FriendLinkMapper">
+
+    <insert id="addFriendLink" parameterType="FriendLink">
+	INSERT INTO `blog`.`blog_flink`
+		(`link_id`,
+		`link_words`,
+		`link_url`,
+		`link_way`,
+		`createtime`,
+		`del_flag`)
+	VALUES
+		(
+		#{link_id,jdbcType=INTEGER},
+		#{link_words,jdbcType=VARCHAR},
+		#{link_url,jdbcType=VARCHAR},
+		#{link_way,jdbcType=VARCHAR},
+		#{createtime,jdbcType=TIMESTAMP},
+		#{del_flag,jdbcType=TINYINT}
+		)
+    </insert>
+
+
+</mapper>

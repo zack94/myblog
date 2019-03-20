@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.suse.zack.mapper.ArticleMapper">
+
+	<!--增加文章 初始时del_flag设置为true,数据库中保存为0-->
+	<insert id="addArticle" parameterType="Article">
+		INSERT INTO `blog`.`blog_article`
+		(
+		`article_id`,
+		`article_label`,
+		`article_title`,
+		`article_content`,
+		`article_picture`,
+		`article_createtime`,
+		`article_readtimes`,
+		`del_flag`
+		)
+		VALUES
+		(
+		#{article_id,jdbcType=VARCHAR},
+		#{article_label,jdbcType=CHAR},
+		#{article_title,jdbcType=VARCHAR},
+		#{article_content,jdbcType=CHAR},
+		#{article_picture,jdbcType=VARCHAR},
+		#{article_createtime,jdbcType=TIMESTAMP},
+		#{article_readtimes,jdbcType=TINYINT},
+		#{del_flag,jdbcType=TINYINT}
+		)
+    </insert>
+
+	<!--按照时间顺序查询并返回5篇文章-->
+	<select id="find5Articles" resultType="Article">
+		SELECT *
+		FROM blog_article
+		ORDER BY article_createtime DESC
+		LIMIT 5
+	</select>
+
+	<select id="articleDetail" parameterType="String" resultType="Article">
+		SELECT *
+		FROM blog_article
+		WHERE article_id = #{article_id}
+	</select>
+
+	<select id="totalCount" resultType="int">
+		SELECT 	COUNT(*)
+		FROM `blog`.`blog_article`
+		WHERE `blog_article`.`del_flag` = 1
+	</select>
+
+	<select id="subList" resultType="Article">
+		SELECT 	`article_id`,
+			`article_label`,
+			`article_title`,
+			`article_content`,
+			`article_picture`,
+			`article_createtime`,
+			`article_readtimes`,
+			`del_flag`
+			FROM
+			`blog`.`blog_article`
+			WHERE `blog_article`.`del_flag` = 1
+			ORDER BY `article_createtime` DESC
+			LIMIT ${pageStart}, ${perPageCount};
+	</select>
+
+
+</mapper>
