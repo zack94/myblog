@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+
+	<!-- 配置service的bean-->
+	<bean id="ArticleService" class="cn.suse.zack.service.Impl.ArticleServiceImpl"/>
+	<bean id="MindService" class="cn.suse.zack.service.Impl.MindServiceImpl"/>
+	<bean id="UserService" class="cn.suse.zack.service.Impl.UserServiceImpl"/>
+	<bean id="FriendLinkService" class="cn.suse.zack.service.Impl.FriendLinkServiceImpl"/>
+
+</beans>
+
+
+
+
+
+
+
+
+
+

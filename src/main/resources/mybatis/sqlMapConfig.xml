@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+<!-- 	配置po包的别名 -->
+	<typeAliases>
+        <typeAlias alias="Article" type="cn.suse.zack.pojo.Article"/>
+        <typeAlias alias="ArticleExtend" type="cn.suse.zack.pojo.ArticleExtend"/>
+        <typeAlias alias="Picture" type="cn.suse.zack.pojo.Picture"/>
+        <!--<package name="cn.suse.zack.pojo.Article"/>-->
+        <!--<package name="cn.suse.zack.pojo.ArticleExtend"/>-->
+        <!--<package name="cn.suse.zack.pojo.Picture"/>-->
+    </typeAliases>
+
+</configuration>
