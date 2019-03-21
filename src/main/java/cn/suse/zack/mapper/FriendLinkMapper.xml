@@ -10,7 +10,7 @@
 		`link_words`,
 		`link_url`,
 		`link_way`,
-		`createtime`,
+		`create_time`,
 		`del_flag`)
 	VALUES
 		(
@@ -18,7 +18,7 @@
 		#{link_words,jdbcType=VARCHAR},
 		#{link_url,jdbcType=VARCHAR},
 		#{link_way,jdbcType=VARCHAR},
-		#{createtime,jdbcType=TIMESTAMP},
+		#{create_time,jdbcType=TIMESTAMP},
 		#{del_flag,jdbcType=TINYINT}
 		)
     </insert>

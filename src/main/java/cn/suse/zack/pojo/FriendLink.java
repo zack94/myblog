@@ -19,7 +19,7 @@ public class FriendLink implements Serializable {
     public String link_words;   //链接文字
     public String link_url;     //链接url
     public String link_way;     //链接打开方式
-    public Date createTime;     //创建时间
+    public Date create_time;     //创建时间
     public Boolean del_flag;    //删除标志
     public String extend_a;     //扩展字段
     public String extend_b;
@@ -57,14 +57,6 @@ public class FriendLink implements Serializable {
         this.link_way = link_way;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public Boolean getDel_flag() {
         return del_flag;
     }
@@ -96,4 +88,12 @@ public class FriendLink implements Serializable {
     public void setExtend_c(String extend_c) {
         this.extend_c = extend_c;
     }
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
 }

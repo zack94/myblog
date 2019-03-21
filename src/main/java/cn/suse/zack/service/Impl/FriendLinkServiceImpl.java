@@ -20,7 +20,7 @@ public class FriendLinkServiceImpl implements FriendLinkService {
 
     @Override
     public void addFriendLinkService(FriendLink friendLink) throws Exception {
-        friendLink.setCreateTime(new Date());
+        friendLink.setCreate_time(new Date());
         friendLink.setDel_flag(true);
         friendLinkMapper.addFriendLink(friendLink);
     }

@@ -69,25 +69,33 @@
                 </div>
                 <footer class="message_footer">
                     <nav>
-                        <div class="btn-toolbar operation" role="toolbar">
-                            <div class="btn-group" role="group"><a class="btn btn-default" onClick="select()">全选</a> <a
-                                    class="btn btn-default" onClick="reverse()">反选</a> <a class="btn btn-default"
-                                                                                          onClick="noselect()">不选</a>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="submit" class="btn btn-default" data-toggle="tooltip"
-                                        data-placement="bottom" title="删除全部选中" name="checkbox_delete">删除
-                                </button>
+                        <div class="row justify-content-center">
+                            <div>
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=1">首页</a></li>
+                                        <li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>
+                                        </li>
+
+                                        <c:forEach begin="1" end="${pagination.getTotalPage()}" varStatus="loop">
+                                            <c:set var="active" value="${loop.index==requestScope.page?'active':''}"/>
+                                            <li class="page-item ${active}">
+                                                <a class="page-link" href="<c:url value='page.action'/>?page=${loop.index}">${loop.index}</a>
+                                            </li>
+                                        </c:forEach>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<c:url value='page.action'/>?page=${pagination.getTotalPage()}">尾页</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
-                        <ul class="pagination pagenav">
-                            <li class="disabled"><a aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a>
-                            </li>
-                            <li class="active"><a>1</a></li>
-                            <li class="disabled"><a aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a></li>
-                        </ul>
                     </nav>
                 </footer>
+
             </form>
         </div>
     </div>
