@@ -23,5 +23,25 @@
 		)
     </insert>
 
+	<select id="getFriendLinkCount" resultType="int">
+		SELECT
+  		COUNT(*)
+		FROM `blog`.`blog_flink`
+	</select>
+
+	<select id="subList" resultType="FriendLink">
+		SELECT 	`link_id`,
+		`link_words`,
+		`link_url`,
+		`link_way`,
+		`create_time`,
+		`del_flag`
+
+		FROM
+		`blog`.`blog_flink`
+		ORDER BY `create_time` DESC
+		LIMIT #{pageStart}, #{perPageCount}
+	</select>
+
 
 </mapper>

@@ -131,24 +131,59 @@
         <div class="row justify-content-center">
             <div>
                 <nav>
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=1">首页</a></li>
-                        <li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>
-                        </li>
+                    <%--<ul class="pagination">--%>
+                        <%--<li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=1">首页</a></li>--%>
+                        <%--<li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>--%>
+                        <%--</li>--%>
 
-                        <c:forEach begin="1" end="${pagination.getTotalPage()}" varStatus="loop">
-                            <c:set var="active" value="${loop.index==requestScope.page?'active':''}"/>
-                            <li class="page-item ${active}">
-                                <a class="page-link" href="<c:url value='page.action'/>?page=${loop.index}">${loop.index}</a>
-                            </li>
-                        </c:forEach>
-                        <li class="page-item">
-                            <a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>
+                        <%--<c:forEach begin="1" end="${pagination.getTotalPage()}" varStatus="loop">--%>
+                            <%--<c:set var="active" value="${loop.index==requestScope.page?'active':''}"/>--%>
+                            <%--<li class="page-item ${active}">--%>
+                                <%--<a class="page-link" href="<c:url value='page.action'/>?page=${loop.index}">${loop.index}</a>--%>
+                            <%--</li>--%>
+                        <%--</c:forEach>--%>
+                        <%--<li class="page-item">--%>
+                            <%--<a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>--%>
+                        <%--</li>--%>
+                        <%--<li class="page-item">--%>
+                            <%--<a class="page-link" href="<c:url value='page.action'/>?page=${pagination.getTotalPage()}">尾页</a>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+
+
+                    <ul class="pagination">
+                        <li class="page-item ${requestScope.page==1?'disabled':''}">
+                            <a class="page-link" href="<c:url value='page.action'/>?${requestScope.page-1>1?requestScope.page-1:1}">上一页</a>
                         </li>
-                        <li class="page-item">
-                            <a class="page-link" href="<c:url value='page.action'/>?page=${pagination.getTotalPage()}">尾页</a>
+                        <c:if test="${requestScope.page!=1}">
+                            <li class="page-item">
+                                <a class="page-link" href="<c:url value='page.action'/>?page=1">1</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${requestScope.page>2}">
+                            <li class="page-item disabled">
+                                <a class="page-link">...</a>
+                            </li>
+                        </c:if>
+                        <li class="page-item active">
+                            <a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page}">${requestScope.page}</a>
+                        </li>
+                        <c:if test="${pagination.getTotalPage()>1}">
+                            <li class="page-item disabled">
+                                <a class="page-link">...</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${requestScope.page!=pagination.getTotalPage()}">
+                            <li class="page-item">
+                                <a class="page-link" href="<c:url value="page.action?page=${pagination.getTotalPage()}"/>">${pagination.getTotalPage()}</a>
+                            </li>
+                        </c:if>
+
+                        <li class="page-item ${requestScope.page==totalPages?'disabled':''}">
+                            <a class="page-link" href="<c:url value="page.action?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}"/>">下一页</a>
                         </li>
                     </ul>
+
                 </nav>
             </div>
         </div>
@@ -159,7 +194,6 @@
         <div class="paihang">
             <h2 class="hometitle">行业脉搏</h2>
             <ul>
-                <%--在jsp代码中嵌入java代码循环打印5遍--%>
                 <% for (int i = 0; i < 5; i++) {%>
                 <li>
                     这里是评论或者读者的留言信息这里是评论或者读者的留言信息
@@ -191,6 +225,11 @@
             <h2 class="hometitle">友情链接</h2>
             <ul>
                 <li><a href="">优秀博文</a></li>
+                <c:forEach items="${requestScope.friendLinks}" var="friendLink">
+                    <li>
+                        <a style="color: #00a0e9" href="${friendLink.link_url}" target="${friendLink.link_way}">${friendLink.link_words}</a></span>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
 

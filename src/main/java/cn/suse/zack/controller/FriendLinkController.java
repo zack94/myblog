@@ -22,15 +22,15 @@ import javax.servlet.http.HttpServletResponse;
 public class FriendLinkController {
 
     @Autowired
-    FriendLinkService service;
+    FriendLinkService sv;
 
     @RequestMapping("addFriendLink.action")
     public ModelAndView addFriendLink(HttpServletRequest request, HttpServletResponse response, FriendLink friendLink)throws Exception{
         //添加友情链接
         ModelAndView modelAndView;
         try {
-            service.addFriendLinkService(friendLink);
-            modelAndView = new ModelAndView("view/admin/jsps/flink.jsp");
+            sv.addFriendLinkService(friendLink);
+            modelAndView = queryFriendLink(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             modelAndView = new ModelAndView("view/admin/info/errors.jsp");
@@ -38,7 +38,9 @@ public class FriendLinkController {
         return modelAndView;
     }
 
-    public ModelAndView queryFriendLink(HttpServletRequest request, HttpServletResponse response) {
+    //跳转到友情链接展示页并回带数据
+    @RequestMapping("friendLinkPage.action")
+    public ModelAndView queryFriendLink(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int perPageCount = 6;
         PaginationHelper pagination = new PaginationHelper();
         // 当前页数
@@ -54,6 +56,18 @@ public class FriendLinkController {
         } catch (NumberFormatException e) {
             perPageCount = 6;
         }
-        return new ModelAndView();
+
+        int totalCount = sv.getFriendLinkCount();
+        int totalPage = totalCount % perPageCount == 0 ? totalCount / perPageCount : totalCount / perPageCount + 1;
+        // 设置总数
+        pagination.setTotalCount(totalCount);
+        // 设置每页数
+        pagination.setPerPageCount(perPageCount);
+        pagination.setTotalPage(totalPage);
+        request.setAttribute("pagination", pagination);
+        request.setAttribute("friendLinks", sv.subList(pagination.getCurrentPageStart(page), perPageCount));
+        request.setAttribute("page", page);
+
+        return new ModelAndView("view/admin/jsps/flink.jsp");
     }
 }

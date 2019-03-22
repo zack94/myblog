@@ -19,21 +19,7 @@
 
 <html>
 <jsp:include page="headFile.jsp"/>
-<%--<title>任志洪的个人博客</title>--%>
-<%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
-<%--<link href="<%=basePath%>static/css/base.css" rel="stylesheet">--%>
-<%--&lt;%&ndash;<link href="../static/css/about.css" rel="stylesheet">&ndash;%&gt;--%>
-<%--<link href="<%=basePath%>static/css/m.css" rel="stylesheet">--%>
-<%--<link href="<%=basePath%>static/css/mindALL.css" rel="stylesheet">--%>
-<%--<link href="<%=basePath%>static/images/bannerlogo.png" rel="shortcut icon">--%>
 
-<%--<!--[if lt IE 9]>--%>
-<%--<script src=<%=basePath%>static/js/modernizr.js"></script>--%>
-<%--<![endif]-->--%>
-<%--<script src="<%=basePath%>static/js/scrollReveal.js"></script>--%>
-<%--<!--[if lt IE 9]>--%>
-<%--<script src="<%=basePath%>static/js/modernizr.js"></script>--%>
-<![endif]-->
 <script>
     window.onload = function () {
         var oH2 = document.getElementsByTagName("h2")[0];
@@ -69,7 +55,7 @@
                                 ${mind.mind_content}
                             </c:if>
                             <c:if test="${mind.mind_look==1}">
-                                这是私密内容不给看
+                                抱歉，这属于博主的个人隐私内容，您不能浏览！
                             </c:if>
                         </p>
                         <a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>

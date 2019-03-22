@@ -6,6 +6,7 @@ import cn.suse.zack.service.interfaces.FriendLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * FileName:FriendLinkServiceImpl
@@ -16,12 +17,22 @@ import java.util.Date;
  */
 public class FriendLinkServiceImpl implements FriendLinkService {
     @Autowired
-    FriendLinkMapper friendLinkMapper;
+    FriendLinkMapper mapper;
 
     @Override
     public void addFriendLinkService(FriendLink friendLink) throws Exception {
         friendLink.setCreate_time(new Date());
         friendLink.setDel_flag(true);
-        friendLinkMapper.addFriendLink(friendLink);
+        mapper.addFriendLink(friendLink);
+    }
+
+    @Override
+    public int getFriendLinkCount() throws Exception {
+        return mapper.getFriendLinkCount();
+    }
+
+    @Override
+    public List<FriendLink> subList(int pageStart, int perPageCount) throws Exception {
+        return mapper.subList(pageStart, perPageCount);
     }
 }

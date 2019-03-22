@@ -4,6 +4,7 @@ import cn.suse.zack.pojo.Article;
 import cn.suse.zack.pojo.PaginationHelper;
 import cn.suse.zack.pojo.Picture;
 import cn.suse.zack.service.interfaces.ArticleService;
+import cn.suse.zack.service.interfaces.FriendLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,8 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private FriendLinkService friendLinkService;
 
     //创建新的文章,创建成功返回到首页查看
     @RequestMapping("addArticle.action")
@@ -146,6 +149,7 @@ public class ArticleController {
         pagination.setTotalPage(totalPage);
         request.setAttribute("pagination", pagination);
         request.setAttribute("articleList", articleService.subList(pagination.getCurrentPageStart(page), perPageCount));
+        request.setAttribute("friendLinks",friendLinkService.subList(0,6));
         request.setAttribute("page", page);
        return "/view/homepage.jsp";
     }

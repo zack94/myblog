@@ -39,7 +39,7 @@
         <li><a href="<%=basePath%>view/admin/jsps/mind.jsp">心情</a></li>
         <li><a href="http://changyan.kuaizhan.com/overview" target="_blank">评论</a></li>
         <li><a href="<%=basePath%>view/admin/jsps/leave_messages.jsp">留言</a></li>
-        <li><a href="<%=basePath%>view/admin/jsps/flink.jsp">友情链接</a></li>
+        <li><a href="<%=basePath%>friendLinkPage.action?page=1">友情链接</a></li>
     </ul>
     <ul class="nav nav-sidebar">
         <li><a href="#">栏目</a></li>

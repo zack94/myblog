@@ -3,6 +3,8 @@ package cn.suse.zack.service.interfaces;
 import cn.suse.zack.pojo.FriendLink;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * FileName:FriendLinkService
  * Description:
@@ -14,4 +16,8 @@ import org.springframework.stereotype.Service;
 public interface FriendLinkService {
     public void addFriendLinkService(FriendLink friendLink) throws Exception;
 
+    //查询友链总数
+    int getFriendLinkCount() throws Exception;
+
+    List<FriendLink> subList(int pageStart, int perPageCount)throws Exception;
 }

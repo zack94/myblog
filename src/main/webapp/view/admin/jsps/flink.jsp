@@ -42,7 +42,7 @@
             <form action="/Flink/checkAll" method="post">
                 <h1 class="page-header">操作</h1>
                 <ol class="breadcrumb">
-                    <li><a href="add_flink.jsp">增加友情链接</a></li>
+                    <li><a href="<%=basePath%>view/admin/jsps/add_flink.jsp">增加友情链接</a></li>
                 </ol>
                 <h1 class="page-header">管理 <span class="badge">1</span></h1>
                 <div class="table-responsive">
@@ -54,16 +54,20 @@
                             <th><span class="glyphicon glyphicon-bookmark"></span> <span class="visible-lg">名称</span>
                             </th>
                             <th><span class="glyphicon glyphicon-link"></span> <span class="visible-lg">URL</span></th>
+                            <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">日期</span></th>
                             <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><input type="checkbox" class="input-control" name="checkbox[]" value=""/></td>
-                            <td class="article-title">异清轩</td>
-                            <td>http://www.ylsat.com</td>
-                            <td><a href="update-flink.html">修改</a> <a rel="6">删除</a></td>
-                        </tr>
+                        <c:forEach items="${requestScope.friendLinks}" var="friendLink">
+                            <tr>
+                                <td><input type="checkbox" class="input-control" name="checkbox[]" value=""/></td>
+                                <td class="article-title">${friendLink.link_words}</td>
+                                <td>${friendLink.link_url}</td>
+                                <td><fmt:formatDate value="${friendLink.create_time}" pattern="yyyy/MM/dd"/></td>
+                                <td><a href="update-flink.html">修改</a> <a rel="6">删除</a></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -73,21 +77,21 @@
                             <div>
                                 <nav>
                                     <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=1">首页</a></li>
-                                        <li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>
+                                        <li class="page-item"><a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=1">首页</a></li>
+                                        <li class="page-item"><a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>
                                         </li>
 
                                         <c:forEach begin="1" end="${pagination.getTotalPage()}" varStatus="loop">
                                             <c:set var="active" value="${loop.index==requestScope.page?'active':''}"/>
                                             <li class="page-item ${active}">
-                                                <a class="page-link" href="<c:url value='page.action'/>?page=${loop.index}">${loop.index}</a>
+                                                <a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${loop.index}">${loop.index}</a>
                                             </li>
                                         </c:forEach>
                                         <li class="page-item">
-                                            <a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>
+                                            <a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>
                                         </li>
                                         <li class="page-item">
-                                            <a class="page-link" href="<c:url value='page.action'/>?page=${pagination.getTotalPage()}">尾页</a>
+                                            <a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${pagination.getTotalPage()}">尾页</a>
                                         </li>
                                     </ul>
                                 </nav>
