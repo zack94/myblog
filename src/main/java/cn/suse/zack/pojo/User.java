@@ -16,6 +16,15 @@ public class User implements Serializable {
     private String user_password;
     private String user_email;
     private String user_state;
+    private String is_admin;
+
+    public String getIs_admin() {
+        return is_admin;
+    }
+
+    public void setIs_admin(String is_admin) {
+        this.is_admin = is_admin;
+    }
 
     public String getUser_id() {
         return user_id;

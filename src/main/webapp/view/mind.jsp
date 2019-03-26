@@ -54,68 +54,17 @@
                             <c:if test="${mind.mind_look==0}">
                                 ${mind.mind_content}
                             </c:if>
-                            <c:if test="${mind.mind_look==1}">
+                            <c:if test="${mind.mind_look==1 && sessionScope.get('admin')==null}">
                                 抱歉，这属于博主的个人隐私内容，您不能浏览！
+                            </c:if>
+                            <c:if test="${sessionScope.admin!=null}">
+                                ${mind.mind_content}
                             </c:if>
                         </p>
                         <a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>
                     </div>
                 </li>
             </c:forEach>
-            <%--<li>--%>
-            <%--<time class="cbp_tmtime"><span>08-08</span> <span>2017</span></time>--%>
-            <%--<div class="cbp_tmicon"></div>--%>
-            <%--<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">--%>
-            <%--<h2>标题</h2>--%>
-            <%--<p><span class="blogpic"><a href=""><img src="../static/images/s1.jpg"></a></span>想要说的话的简介。。。。。。--%>
-            <%--</p>--%>
-            <%--<a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>--%>
-            <%--</div>--%>
-            <%--</li>--%>
-
-            <%--<li>--%>
-            <%--<time class="cbp_tmtime"><span>08-08</span> <span>2017</span></time>--%>
-            <%--<div class="cbp_tmicon"></div>--%>
-            <%--<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">--%>
-            <%--<h2>标题</h2>--%>
-            <%--<p><span class="blogpic"><a href=""><img src="../static/images/s1.jpg"></a></span>想要说的话的简介。。。。。。--%>
-            <%--</p>--%>
-            <%--<a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>--%>
-            <%--</div>--%>
-            <%--</li>--%>
-
-            <%--<li>--%>
-            <%--<time class="cbp_tmtime"><span>08-08</span> <span>2017</span></time>--%>
-            <%--<div class="cbp_tmicon"></div>--%>
-            <%--<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">--%>
-            <%--<h2>标题</h2>--%>
-            <%--<p><span class="blogpic"><a href=""><img src="../static/images/s1.jpg"></a></span>想要说的话的简介。。。。。。--%>
-            <%--</p>--%>
-            <%--<a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>--%>
-            <%--</div>--%>
-            <%--</li>--%>
-
-            <%--<li>--%>
-            <%--<time class="cbp_tmtime"><span>08-08</span> <span>2017</span></time>--%>
-            <%--<div class="cbp_tmicon"></div>--%>
-            <%--<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">--%>
-            <%--<h2>标题</h2>--%>
-            <%--<p><span class="blogpic"><a href=""><img src="../static/images/s1.jpg"></a></span>想要说的话的简介。。。。。。--%>
-            <%--</p>--%>
-            <%--<a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>--%>
-            <%--</div>--%>
-            <%--</li>--%>
-
-            <%--<li>--%>
-            <%--<time class="cbp_tmtime"><span>08-08</span> <span>2017</span></time>--%>
-            <%--<div class="cbp_tmicon"></div>--%>
-            <%--<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s">--%>
-            <%--<h2>标题</h2>--%>
-            <%--<p><span class="blogpic"><a href=""><img src="../static/images/s1.jpg"></a></span>想要说的话的简介。。。。。。--%>
-            <%--</p>--%>
-            <%--<a href="" target="_blank" class="readmore">点击阅读&gt;&gt;</a>--%>
-            <%--</div>--%>
-            <%--</li>--%>
 
         </ul>
     </div>

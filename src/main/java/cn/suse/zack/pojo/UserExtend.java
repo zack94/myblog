@@ -8,6 +8,8 @@ package cn.suse.zack.pojo;
  * Time:16:02
  */
 public class UserExtend extends User {
+
+
     private String vcode;
 
     public String getVcode() {
@@ -17,4 +19,5 @@ public class UserExtend extends User {
     public void setVcode(String vcode) {
         this.vcode = vcode;
     }
+
 }

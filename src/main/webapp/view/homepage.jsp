@@ -192,7 +192,7 @@
     <div class="rbox">
         <%--评论留言板块--%>
         <div class="paihang">
-            <h2 class="hometitle">行业脉搏</h2>
+            <h2 class="hometitle">IT新风向</h2>
             <ul>
                 <% for (int i = 0; i < 5; i++) {%>
                 <li>

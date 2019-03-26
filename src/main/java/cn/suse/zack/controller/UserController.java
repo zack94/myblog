@@ -111,7 +111,7 @@ public class UserController {
 
         //验证码正确
         //完善用户信息，完成注册,跳转登陆页
-        userExtend.setUser_id(UUID.randomUUID().toString());
+        //userExtend.setUser_id(UUID.randomUUID().toString());
         userExtend.setUser_state("0");
         try {
             userService.addUser(userExtend);
@@ -161,7 +161,11 @@ public class UserController {
         //否则用户存在
         //保存用户到session域中返回页面
         request.setAttribute("success","恭喜您，登陆成功！");
-        request.getSession().setAttribute("user",userExtend);
+        if (user.getIs_admin().equals("1")) {
+            request.getSession().setAttribute("admin", user);
+        } else {
+            request.getSession().setAttribute("user",user);
+        }
         return "view/login.jsp";
     }
 

@@ -9,6 +9,7 @@
 	<bean id="MindService" class="cn.suse.zack.service.Impl.MindServiceImpl"/>
 	<bean id="UserService" class="cn.suse.zack.service.Impl.UserServiceImpl"/>
 	<bean id="FriendLinkService" class="cn.suse.zack.service.Impl.FriendLinkServiceImpl"/>
+	<bean id="ITNewsService" class="cn.suse.zack.service.Impl.ITNewsServiceImpl"/>
 
 </beans>
 
