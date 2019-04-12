@@ -58,12 +58,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${requestScope.friendLinks}" var="friendLink">
+                        <c:forEach items="${requestScope.itNewsList}" var="itNews">
                             <tr>
                                 <td><input type="checkbox" class="input-control" name="checkbox[]" value=""/></td>
-                                <td class="article-title">${friendLink.link_words}</td>
-                                <td>${friendLink.link_url}</td>
-                                <td><fmt:formatDate value="${friendLink.create_time}" pattern="yyyy/MM/dd"/></td>
+                                <td class="article-title">${itNews.news_content}</td>
+                                <td>${itNews.news_url}</td>
+                                <td><fmt:formatDate value="${itNews.create_time}" pattern="yyyy/MM/dd"/></td>
                                 <td><a href="update-flink.html">修改</a> <a rel="6">删除</a></td>
                             </tr>
                         </c:forEach>
@@ -76,21 +76,21 @@
                             <div>
                                 <nav>
                                     <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=1">首页</a></li>
-                                        <li class="page-item"><a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>
+                                        <li class="page-item"><a class="page-link" href="<c:url value='queryITNewsPage.action'/>?page=1">首页</a></li>
+                                        <li class="page-item"><a class="page-link" href="<c:url value='queryITNewsPage.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>
                                         </li>
 
                                         <c:forEach begin="1" end="${pagination.getTotalPage()}" varStatus="loop">
                                             <c:set var="active" value="${loop.index==requestScope.page?'active':''}"/>
                                             <li class="page-item ${active}">
-                                                <a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${loop.index}">${loop.index}</a>
+                                                <a class="page-link" href="<c:url value='queryITNewsPage.action'/>?page=${loop.index}">${loop.index}</a>
                                             </li>
                                         </c:forEach>
                                         <li class="page-item">
-                                            <a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>
+                                            <a class="page-link" href="<c:url value='queryITNewsPage.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>
                                         </li>
                                         <li class="page-item">
-                                            <a class="page-link" href="<c:url value='friendLinkPage.action'/>?page=${pagination.getTotalPage()}">尾页</a>
+                                            <a class="page-link" href="<c:url value='queryITNewsPage.action'/>?page=${pagination.getTotalPage()}">尾页</a>
                                         </li>
                                     </ul>
                                 </nav>

@@ -1,6 +1,7 @@
 package cn.suse.zack.controller;
 
 import cn.suse.zack.pojo.ITNews;
+import cn.suse.zack.pojo.PaginationHelper;
 import cn.suse.zack.service.interfaces.ITNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +21,55 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class ITNewsController {
     @Autowired
-    ITNewsService service;
+    ITNewsService sv;
 
     @RequestMapping("addITNewsInfo.action")
     public ModelAndView addITNewsInfo(HttpServletRequest request, HttpServletResponse response, ITNews itNews) {
-        String content = request.getParameter("content");
-        String url = request.getParameter("url");
-        String way = request.getParameter("way");
-        System.out.println("content" + content + "url" + url + "way" + way);
-        return new ModelAndView();
+
+        //添加成功返回到ITNews页面刷新显示信息
+        ModelAndView modelAndView;
+        try {
+            sv.addITNewsInfo(itNews);
+            //查询一下返回数据
+            modelAndView = queryITNewsInfo(request,response);
+            modelAndView.setViewName("view/admin/jsps/ITNews.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
     }
+
+    @RequestMapping("queryITNewsPage.action")
+    public ModelAndView queryITNewsInfo(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        int perPageCount = 6;
+        PaginationHelper pagination = new PaginationHelper();
+        // 当前页数
+        int page;
+        try {
+            page = Integer.valueOf(request.getParameter("page"));
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        try {
+            if (request.getParameter("countPerPage") != null)
+                perPageCount = Integer.valueOf(request.getParameter("countPerPage"));
+        } catch (NumberFormatException e) {
+            perPageCount = 6;
+        }
+
+        int totalCount = sv.getITNewsCount();
+        int totalPage = totalCount % perPageCount == 0 ? totalCount / perPageCount : totalCount / perPageCount + 1;
+        // 设置总数
+        pagination.setTotalCount(totalCount);
+        // 设置每页数
+        pagination.setPerPageCount(perPageCount);
+        pagination.setTotalPage(totalPage);
+        request.setAttribute("pagination", pagination);
+        request.setAttribute("itNewsList", sv.subList(pagination.getCurrentPageStart(page), perPageCount));
+        request.setAttribute("page", page);
+
+        return new ModelAndView("view/admin/jsps/ITNews.jsp");
+    }
+
 }

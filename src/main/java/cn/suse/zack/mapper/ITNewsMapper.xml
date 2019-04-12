@@ -23,4 +23,28 @@
 			)
     </insert>
 
+
+	<select id="getITNewsCount" resultType="int">
+		SELECT COUNT(*)
+		FROM `blog`.`blog_itnews`
+	</select>
+
+
+	<select id="subList" resultType="ITNews">
+		SELECT 	`news_id`,
+		`news_content`,
+		`news_url`,
+		`news_way`,
+		`create_time`,
+		`del_flag`,
+		`extend_a`,
+		`extend_b`,
+		`extend_c`
+
+		FROM
+		`blog`.`blog_itnews`
+		ORDER BY `create_time` DESC
+		LIMIT #{pageStart}, #{perPageCount}
+	</select>
+
 </mapper>

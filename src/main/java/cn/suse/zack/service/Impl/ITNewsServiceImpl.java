@@ -6,6 +6,7 @@ import cn.suse.zack.service.interfaces.ITNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * FileName:ITNewsServiceImpl
@@ -23,4 +24,15 @@ public class ITNewsServiceImpl implements ITNewsService {
         itNews.setDel_flag("1");
         mapper.addITNewsInfo(itNews);
     }
+
+    @Override
+    public int getITNewsCount() throws Exception {
+        return mapper.getITNewsCount();
+    }
+
+    @Override
+    public List<ITNews> subList(int pageStart, int perPageCount) throws Exception {
+        return mapper.subList(pageStart, perPageCount);
+    }
+
 }

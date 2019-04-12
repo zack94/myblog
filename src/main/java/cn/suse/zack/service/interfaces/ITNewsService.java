@@ -3,6 +3,8 @@ package cn.suse.zack.service.interfaces;
 import cn.suse.zack.pojo.ITNews;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * FileName:ITNewsService
  * Description:
@@ -13,4 +15,9 @@ import org.springframework.stereotype.Service;
 @Service("ITNewsService")
 public interface ITNewsService {
     void addITNewsInfo(ITNews itNews) throws Exception;
+
+    int getITNewsCount() throws Exception;
+
+    List<ITNews> subList(int pageStart, int perPageCount)throws Exception;
+
 }

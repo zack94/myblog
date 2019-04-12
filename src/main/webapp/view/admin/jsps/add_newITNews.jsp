@@ -75,9 +75,7 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="news_way" value="_top"/>_top
                                 </p>
                                 <p>
-                                    <%--<label>rel：</label>--%>
-                                    <%--<input type="radio" name="rel" value="0" checked/>--%>
-                                    <%--nofollow&nbsp;&nbsp;<input type="radio" name="rel" value="1"/>none</p>--%>
+
                                     <span></span>
                                 <p>
                                     <label>&nbsp;&nbsp;&nbsp;&nbsp;增加于:&nbsp;&nbsp;<span id="timeShow" class="time1"></span></label>
