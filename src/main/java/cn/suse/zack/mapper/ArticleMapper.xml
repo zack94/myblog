@@ -67,5 +67,11 @@
 			LIMIT ${pageStart}, ${perPageCount};
 	</select>
 
+	<select id="queryArticleById" resultType="Article">
+		SELECT 	*
+		FROM `blog`.`blog_article`
+		WHERE `blog_article`.article_id = #{article_id}
+	</select>
+
 
 </mapper>

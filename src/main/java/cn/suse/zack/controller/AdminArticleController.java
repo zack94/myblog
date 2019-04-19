@@ -1,5 +1,6 @@
 package cn.suse.zack.controller;
 
+import cn.suse.zack.pojo.Article;
 import cn.suse.zack.pojo.PaginationHelper;
 import cn.suse.zack.service.interfaces.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,4 +62,14 @@ public class AdminArticleController {
         return modelAndView;
     }
 
+    //修改数据 1.根据当前的文章id查找到该文章，将文章回显
+    //        2.更新修改的数据到库，update
+    @RequestMapping("queryArticle.action")
+    public ModelAndView queryArticle(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String article_id = request.getParameter("article_id");
+        ModelAndView modelAndView = new ModelAndView("view/admin/jsps/edit_article.jsp");
+        Article article = articleService.queryArticleById(article_id);
+        modelAndView.addObject("article", article);
+        return modelAndView;
+    }
 }

@@ -52,7 +52,8 @@
                                 <td class="hidden-sm">${article.article_label}</td>
                                 <td><fmt:formatDate value="${article.article_createtime}" pattern="yyyy/MM/dd"/></td>
                                 <td>
-                                    <a href="">修改</a>
+
+                                    <a href="<c:url value='queryArticle.action'/>?article_id=${article.article_id}">修改</a>
                                     <a rel="6">删除</a>
                                 </td>
                         </tr>

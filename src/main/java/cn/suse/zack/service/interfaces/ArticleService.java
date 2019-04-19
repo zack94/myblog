@@ -51,4 +51,6 @@ public interface ArticleService {
      * @throws Exception
      */
     public List<Article> subList(int pageStart, int perPageCount) throws Exception;
+
+    public Article queryArticleById(String id) throws Exception;
 }

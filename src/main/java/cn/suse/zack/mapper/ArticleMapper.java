@@ -49,4 +49,6 @@ public interface ArticleMapper {
      * @throws Exception
      */
     public List<Article> subList(@Param("pageStart") int pageStart, @Param("perPageCount") int perPageCount) throws Exception;
+
+    public Article queryArticleById(@Param("article_id") String id) throws Exception;
 }

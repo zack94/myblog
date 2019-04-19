@@ -60,5 +60,10 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.subList(pageStart, perPageCount);
     }
 
+    @Override
+    public Article queryArticleById(String id) throws Exception {
+        return articleMapper.queryArticleById(id);
+    }
+
 
 }

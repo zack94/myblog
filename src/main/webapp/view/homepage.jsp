@@ -194,15 +194,13 @@
         <div class="paihang">
             <h2 class="hometitle">IT新风向</h2>
             <ul>
-                <% for (int i = 0; i < 5; i++) {%>
-                <li>
-                    这里是评论或者读者的留言信息这里是评论或者读者的留言信息
-                    这里是评论
-                    <div style="float: right">
-                        <span>——评论者(来自:<a style="color: #00a0e9" href="" target="_blank">文章xxxxx</a>)</span>
-                    </div>
-                </li>
-                <%}%>
+                <c:forEach items="${requestScope.ITNews}" var="ITNews">
+                    <li>
+                        <div style="float: right">
+                            <span><a style="color: #00a0e9" href="${ITNews.news_url}" target="${ITNews.news_way}">${ITNews.news_content}</a></span>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
         <%--<jsp:include page="connect.jsp"/>--%>
