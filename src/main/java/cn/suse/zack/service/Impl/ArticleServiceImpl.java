@@ -66,8 +66,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void updateArticle(Article article, String article_id) throws Exception {
-        articleMapper.updateArticle(article, article_id);
+    public void updateArticle(Article article) throws Exception {
+        articleMapper.updateArticle(article);
     }
 
 

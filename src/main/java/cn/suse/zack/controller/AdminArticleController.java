@@ -79,11 +79,17 @@ public class AdminArticleController {
     //保存修改的数据
     @RequestMapping("updateArticle.action")
     public ModelAndView updateArticle(HttpServletRequest request,HttpServletResponse response,Article article) throws Exception {
-        System.out.println("........................");
-        String article_id = request.getParameter("article_id");
-        System.out.println(article_id);
+
+        ModelAndView modelAndView;
         System.out.println(article);
-        System.out.println("........................");
-        return null;
+        try {
+            //如果修改成功跳转到文章列表页
+            articleService.updateArticle(article);
+            modelAndView =  articleInfo(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
     }
 }

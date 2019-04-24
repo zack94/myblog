@@ -54,5 +54,5 @@ public interface ArticleService {
 
     public Article queryArticleById(String id) throws Exception;
 
-    public void updateArticle(Article article, String article_id) throws Exception;
+    public void updateArticle(Article article) throws Exception;
 }

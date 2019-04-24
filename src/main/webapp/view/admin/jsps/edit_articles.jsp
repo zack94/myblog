@@ -58,7 +58,7 @@
 
         function save() {
             var content = UE.getEditor('infoEditor').getContent();
-            content = content.replace(new RegExp("<", "g"), "<").replace(new RegExp(">", "g"), ">").replace(new RegExp("\"", "g"), "");
+            // content = content.replace(new RegExp("<", "g"), "<").replace(new RegExp(">", "g"), ">").replace(new RegExp("\"", "g"), "");
             $("#editorValue").val(content);
             $("#ueform").submit();
         }
@@ -76,11 +76,12 @@
         <jsp:include page="left_Navigation_bar.jsp"/>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
             <div class="row">
-                <form action="<%=basePath%>updateArticle.action?article_id=" id="ueform">
+
+                <form action="<%=basePath%>updateArticle.action" method="post" enctype="multipart/form-data">
                     <div class="col-md-9">
                         <h1 class="page-header">修改文章</h1>
                         <div class="form-group">
-                            <input type="text" name="article_id" value="${requestScope.article.article_id}">
+                            <input type="text" name="article_id" value="${requestScope.article.article_id}" style="display: none">
                             <h2 class="add-article-box-title"><span>标题</span></h2>
                             <input type="text" id="article-title" name="article_title" value="${requestScope.article.article_title}" class="form-control"
                                    placeholder="在此处输入标题" required autofocus autocomplete="off">

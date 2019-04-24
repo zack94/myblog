@@ -54,9 +54,9 @@ public class ArticleController {
                 articleService.addArticle(article);
             } catch (Exception e) {
                 e.printStackTrace();
-                return "/view/admin/info/errors.jsp";
+                return "view/admin/info/errors.jsp";
             }
-            return "/view/admin/jsps/index.jsp";
+            return "view/admin/jsps/article.jsp";
         }
 
         // 获取上传图片的源文件名
