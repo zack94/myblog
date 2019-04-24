@@ -84,4 +84,12 @@
 		`article_id` = #{article_id}
 	</update>
 
+    <update id="deleteArticle" parameterType="String">
+        UPDATE `blog`.`blog_article`
+	    SET
+        `del_flag` = '0'
+        WHERE
+        `article_id` = #{article_id}
+    </update>
+
 </mapper>

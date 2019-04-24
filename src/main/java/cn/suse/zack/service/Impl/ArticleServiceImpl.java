@@ -70,5 +70,11 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.updateArticle(article);
     }
 
+    //删除文章
+    @Override
+    public void deleteArticle(String article_id) throws Exception {
+        articleMapper.deleteArticle(article_id);
+    }
+
 
 }

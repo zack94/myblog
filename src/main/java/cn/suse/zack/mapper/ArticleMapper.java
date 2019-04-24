@@ -53,4 +53,7 @@ public interface ArticleMapper {
     public Article queryArticleById(@Param("article_id") String id) throws Exception;
 
     public void updateArticle(Article article) throws Exception;
+
+    public void deleteArticle(@Param("article_id")String article_id) throws Exception;
+
 }

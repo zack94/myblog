@@ -54,7 +54,7 @@
                                 <td>
 
                                     <a href="<c:url value='queryArticle.action'/>?article_id=${article.article_id}">修改</a>
-                                    <a rel="6">删除</a>
+                                    <a href="<c:url value='deleteArticle.action'/>?article_id=${article.article_id}">删除</a>
                                 </td>
                         </tr>
                         </c:forEach>

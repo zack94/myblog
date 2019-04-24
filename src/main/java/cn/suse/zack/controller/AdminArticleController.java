@@ -92,4 +92,24 @@ public class AdminArticleController {
         }
         return modelAndView;
     }
+
+
+
+    //逻辑删除文章
+    @RequestMapping("deleteArticle.action")
+    public ModelAndView deleteArticle(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        String article_id = request.getParameter("article_id");
+        ModelAndView modelAndView;
+        System.out.println(article_id);
+        try {
+            //如果修改成功跳转到文章列表页
+            articleService.deleteArticle(article_id);
+            modelAndView =  articleInfo(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
+
 }
