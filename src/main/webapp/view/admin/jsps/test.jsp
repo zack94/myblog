@@ -26,8 +26,10 @@
     <script src="<%=basePath%>ueditor/ueditor.all.js"></script>
     <script src="<%=basePath%>ueditor/ueditor.config.js"></script>
     <script src="<%=basePath%>ueditor/ueditor.all.min.js"></script>
-
+    <%--<script src="<%=basePath%>view/admin/jsps/js/test.js"></script>--%>
+    <script src="<%=basePath%>ueditor/third-party/jquery-1.10.2.js"></script>
     <script>
+
         $(function(){
             var toolbars = [["fullscreen","source","undo","redo","insertunorderedlist",
                 "insertorderedlist","cleardoc","selectall","searchreplace","preview","date","time",
@@ -43,7 +45,9 @@
             });
 
             //初始化编辑框内容
-            var htmlStr = $("#editorValue").val();
+            // var htmlStr = $("#editorValue").val();
+            var htmlStr = "${requestScope.article.article_content}";
+            console.log(htmlStr);
             ue.ready(function() {
                 ue.setContent(htmlStr, false);
             });
@@ -55,17 +59,22 @@
             $("#editorValue").val(content);
             $("#ueform").submit();
         }
+
     </script>
+
+
 </head>
 
 
 <body>
-    <form action="" id="ueform">
-        <input id="editorValue" value="${requestScope.article.article_content}" type="hidden"/>
-        <div style="width: 80%;">
-            <script id="infoEditor" type="text/plain" style="width:100%;"/>
-        </div>
-    </form>
+<form action="" id="ueform">
+    <%--"${requestScope.article.article_content}"--%>
+    <%--<%=request.getAttribute("article")%>--%>
+    <input id="editorValue" type="hidden"/>
+    <div style="width: 80%;">
+        <script id="infoEditor" type="text/plain" style="width:100%;"/>
+    </div>
+</form>
 </body>
 
 </html>

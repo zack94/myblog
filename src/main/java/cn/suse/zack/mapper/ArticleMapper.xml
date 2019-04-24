@@ -73,5 +73,15 @@
 		WHERE `blog_article`.article_id = #{article_id}
 	</select>
 
+	<update id="updateArticle">
+		UPDATE `blog`.`blog_article`
+		SET
+		`article_label` = #{article_label},
+		`article_title` = #{article_title},
+		`article_content` = #{article_content},
+		`article_picture` = #{article_picture}
+		WHERE
+		`article_id` = ${article_id}
+	</update>
 
 </mapper>

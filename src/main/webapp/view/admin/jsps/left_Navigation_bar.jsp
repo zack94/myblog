@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/font-awesome.min.css">
     <link rel="apple-touch-icon-precomposed" href="<%=basePath%>static/images/icon/icon.png">
     <link rel="shortcut icon" href="<%=basePath%>static/images/bannerlogo.png">
-    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="<%=basePath%>view/admin/js/jquery-2.1.4.min.js"></script>
     <!--[if gte IE 9]>
     <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../js/html5shiv.min.js" type="text/javascript"></script>

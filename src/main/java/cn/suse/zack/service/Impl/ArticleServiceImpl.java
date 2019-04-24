@@ -65,5 +65,10 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.queryArticleById(id);
     }
 
+    @Override
+    public void updateArticle(Article article, String article_id) throws Exception {
+        articleMapper.updateArticle(article, article_id);
+    }
+
 
 }

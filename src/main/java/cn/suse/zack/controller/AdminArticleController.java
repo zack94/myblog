@@ -67,9 +67,23 @@ public class AdminArticleController {
     @RequestMapping("queryArticle.action")
     public ModelAndView queryArticle(HttpServletRequest request, HttpServletResponse response) throws Exception{
         String article_id = request.getParameter("article_id");
-        ModelAndView modelAndView = new ModelAndView("view/admin/jsps/edit_article.jsp");
+        ModelAndView modelAndView = new ModelAndView("view/admin/jsps/edit_articles.jsp");
         Article article = articleService.queryArticleById(article_id);
+        article.setArticle_content(article.getArticle_content().replaceAll("(\r|\n|\r\n|\n\r)", " "));
+        article.setArticle_content(article.getArticle_content().replaceAll("\"","\\\\"+"\""));
+        article.setArticle_content(article.getArticle_content().replaceAll("\'","\\\\"+"\'"));
         modelAndView.addObject("article", article);
         return modelAndView;
+    }
+
+    //保存修改的数据
+    @RequestMapping("updateArticle.action")
+    public ModelAndView updateArticle(HttpServletRequest request,HttpServletResponse response,Article article) throws Exception {
+        System.out.println("........................");
+        String article_id = request.getParameter("article_id");
+        System.out.println(article_id);
+        System.out.println(article);
+        System.out.println("........................");
+        return null;
     }
 }
