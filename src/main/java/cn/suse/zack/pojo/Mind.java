@@ -18,6 +18,15 @@ public class Mind {
     private Date mind_date;
     private String mind_look;
     private String mind_picture;
+    private int del_flag;
+
+    public int getDel_flag() {
+        return del_flag;
+    }
+
+    public void setDel_flag(int del_flag) {
+        this.del_flag = del_flag;
+    }
 
     public String getMind_id() {
         return mind_id;

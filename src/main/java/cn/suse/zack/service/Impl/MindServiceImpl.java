@@ -41,4 +41,17 @@ public class MindServiceImpl implements MindService {
 
         return mindMapper.findTenMind();
     }
+
+    //查询心情文章总数
+    @Override
+    public int getTotalCount() throws Exception {
+        return mindMapper.totalCount();
+
+    }
+
+    @Override
+    public List<Mind> subList(int pageStart, int perPageCount) throws Exception {
+        return mindMapper.subList(pageStart, perPageCount);
+
+    }
 }

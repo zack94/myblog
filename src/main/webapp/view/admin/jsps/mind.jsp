@@ -39,7 +39,7 @@
         <jsp:include page="left_Navigation_bar.jsp"/>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
             <div class="row">
-                <form action="../../addNewMind.action" method="post" enctype="multipart/form-data">
+                <form action="<%=basePath%>addNewMind.action" method="post" enctype="multipart/form-data">
                     <div class="col-md-9">
                         <h1 class="page-header">新心情</h1>
 

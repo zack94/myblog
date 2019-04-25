@@ -1,6 +1,7 @@
 package cn.suse.zack.mapper;
 
 import cn.suse.zack.pojo.Mind;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,4 +30,12 @@ public interface MindMapper {
      * @throws Exception 抛出异常
      */
     public List<Mind> findTenMind() throws Exception;
+
+
+    //查询心情文章总数
+    public int totalCount() throws Exception;
+
+    public List<Mind> subList(@Param("pageStart") int pageStart, @Param("perPageCount") int perPageCount) throws Exception;
+
+
 }

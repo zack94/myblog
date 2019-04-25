@@ -131,25 +131,6 @@
         <div class="row justify-content-center">
             <div>
                 <nav>
-                    <%--<ul class="pagination">--%>
-                        <%--<li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=1">首页</a></li>--%>
-                        <%--<li class="page-item"><a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page-1>1?requestScope.page-1:1}">&laquo;</a>--%>
-                        <%--</li>--%>
-
-                        <%--<c:forEach begin="1" end="${pagination.getTotalPage()}" varStatus="loop">--%>
-                            <%--<c:set var="active" value="${loop.index==requestScope.page?'active':''}"/>--%>
-                            <%--<li class="page-item ${active}">--%>
-                                <%--<a class="page-link" href="<c:url value='page.action'/>?page=${loop.index}">${loop.index}</a>--%>
-                            <%--</li>--%>
-                        <%--</c:forEach>--%>
-                        <%--<li class="page-item">--%>
-                            <%--<a class="page-link" href="<c:url value='page.action'/>?page=${requestScope.page+1<pagination.getTotalPage()?requestScope.page+1:pagination.getTotalPage()}">&raquo;</a>--%>
-                        <%--</li>--%>
-                        <%--<li class="page-item">--%>
-                            <%--<a class="page-link" href="<c:url value='page.action'/>?page=${pagination.getTotalPage()}">尾页</a>--%>
-                        <%--</li>--%>
-                    <%--</ul>--%>
-
 
                     <ul class="pagination">
                         <li class="page-item ${requestScope.page==1?'disabled':''}">

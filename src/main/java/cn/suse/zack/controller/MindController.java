@@ -1,12 +1,14 @@
 package cn.suse.zack.controller;
 
 import cn.suse.zack.pojo.Mind;
+import cn.suse.zack.pojo.PaginationHelper;
 import cn.suse.zack.pojo.Picture;
 import cn.suse.zack.service.interfaces.MindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,7 +58,7 @@ public class MindController {
         //完善mind对象的信息
         mind.setMind_picture(pictureName);
         mind.setMind_date(new Date());
-        mind.setMind_id(UUID.randomUUID().toString());
+        //mind.setMind_id(UUID.randomUUID().toString());
 
         //mind对象封装完毕，调用service方法持久化到数据库
         try {
@@ -158,4 +160,37 @@ public class MindController {
         //执行到此还没出错则数据已保存到request域中，返回到mind.jsp页面显示
         return "view/mind.jsp";
     }
+
+    @RequestMapping("queryMindInfo.action")
+    public ModelAndView queryMindInfo(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        int perPageCount = 6;
+        PaginationHelper pagination = new PaginationHelper();
+        // 当前页数
+        int page;
+        try {
+            page = Integer.valueOf(request.getParameter("page"));
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        try {
+            if (request.getParameter("countPerPage") != null)
+                perPageCount = Integer.valueOf(request.getParameter("countPerPage"));
+        } catch (NumberFormatException e) {
+            perPageCount = 6;
+        }
+        int totalCount = mindService.getTotalCount();
+        int totalPage = totalCount % perPageCount == 0 ? totalCount / perPageCount : totalCount / perPageCount + 1;
+        // 设置用户总数
+        pagination.setTotalCount(totalCount);
+        // 设置每页用户数
+        pagination.setPerPageCount(perPageCount);
+        pagination.setTotalPage(totalPage);
+        modelAndView.addObject("page",page);
+        modelAndView.addObject("pagination", pagination);
+        modelAndView.addObject("mindList", mindService.subList(pagination.getCurrentPageStart(page), perPageCount));
+        modelAndView.setViewName("view/admin/jsps/mindList.jsp");
+        return modelAndView;
+    }
+
 }

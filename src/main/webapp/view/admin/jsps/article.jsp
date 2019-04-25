@@ -37,8 +37,8 @@
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th><span class="glyphicon glyphicon-th-large"></span> <span class="visible-lg">选择</span></th>
-                            <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">标题</span></th>
+                            <th><span class="glyphicon glyphicon-ok-sign"></span> <span class="visible-lg">选择</span></th>
+                            <th><span class="glyphicon glyphicon-bookmark"></span> <span class="visible-lg">标题</span></th>
                             <th class="hidden-sm"><span class="glyphicon glyphicon-tag"></span> <span class="visible-lg">标签</span></th>
                             <th><span class="glyphicon glyphicon-time"></span> <span class="visible-lg">日期</span></th>
                             <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
@@ -52,7 +52,7 @@
                                 <td class="hidden-sm">${article.article_label}</td>
                                 <td><fmt:formatDate value="${article.article_createtime}" pattern="yyyy/MM/dd"/></td>
                                 <td>
-
+                                    <a href="articleDetail.action?article_id=${article.article_id}" target="_blank">查看</a>
                                     <a href="<c:url value='queryArticle.action'/>?article_id=${article.article_id}">修改</a>
                                     <a href="<c:url value='deleteArticle.action'/>?article_id=${article.article_id}">删除</a>
                                 </td>

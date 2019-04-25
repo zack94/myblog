@@ -30,4 +30,10 @@ public interface MindService {
      * @throws Exception 出错抛出异常
      */
     public List<Mind> findTenMind() throws Exception;
+
+    //查询心情文章总数
+    public int getTotalCount() throws Exception;
+
+    List<Mind> subList(int pageStart, int perPageCount)throws Exception;
+
 }
