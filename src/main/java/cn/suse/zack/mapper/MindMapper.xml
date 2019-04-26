@@ -54,7 +54,14 @@
         WHERE `blog_mind`.`del_flag`=1
         ORDER BY `mind_date` DESC
         LIMIT ${pageStart}, ${perPageCount}
-
     </select>
+
+    <update id="changeMindLook">
+        UPDATE `blog`.`blog_mind`
+        SET
+        `mind_look` = #{mind_look}
+        WHERE
+        `mind_id` = #{mind_id}
+    </update>
 
 </mapper>

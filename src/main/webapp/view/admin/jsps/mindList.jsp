@@ -78,8 +78,14 @@
                                 </td>
                                 <td style="padding-left: -50px;width: 136px;"><fmt:formatDate value="${mind.mind_date}" pattern="yyyy/MM/dd"/></td>
                                 <td class="article-title">
-                                    <c:if test="${mind.mind_look==1}">私密 <span class="glyphicon glyphicon-refresh"></span> 置为公开</c:if>
-                                    <c:if test="${mind.mind_look==0}">公开 <span class="glyphicon glyphicon-refresh"></span> 置为私密</c:if>
+                                    <c:if test="${mind.mind_look==0}">私密 <span class="glyphicon glyphicon-refresh"></span>
+
+                                        <a href="<%=basePath%>changeMindLook.action?mind_id=${mind.mind_id}&mind_look=1">置为公开</a>
+                                    </c:if>
+
+                                    <c:if test="${mind.mind_look==1}">公开 <span class="glyphicon glyphicon-refresh"></span>
+                                        <a href="<%=basePath%>changeMindLook.action?mind_id=${mind.mind_id}&mind_look=0">置为私密</a>
+                                    </c:if>
                                 </td>
                                 <td>
                                     <a href="<c:url value='queryArticle.action'/>?mind_id=${mind.mind_id}">修改</a>

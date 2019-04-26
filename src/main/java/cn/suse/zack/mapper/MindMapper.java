@@ -37,5 +37,7 @@ public interface MindMapper {
 
     public List<Mind> subList(@Param("pageStart") int pageStart, @Param("perPageCount") int perPageCount) throws Exception;
 
+    //修改文章的可见性
+    public void changeMindLook(@Param("mind_look") String mind_look,@Param("mind_id")String mind_id) throws Exception;
 
 }

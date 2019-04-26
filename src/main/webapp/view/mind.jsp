@@ -50,11 +50,11 @@
                         <%--<h2>标题</h2>--%>
                         <p><span class="blogpic">
                         <a href=""><img src="<%=basePath%>mindPicture/${mind.mind_picture}"></a></span>
-                            <%--0表示公开--%>
-                            <c:if test="${mind.mind_look==0}">
+                            <%--1表示公开--%>
+                            <c:if test="${mind.mind_look==1}">
                                 ${mind.mind_content}
                             </c:if>
-                            <c:if test="${mind.mind_look==1 && sessionScope.get('admin')==null}">
+                            <c:if test="${mind.mind_look==0 && sessionScope.get('admin')==null}">
                                 抱歉，这属于博主的个人隐私内容，您不能浏览！
                             </c:if>
                             <c:if test="${sessionScope.admin!=null}">

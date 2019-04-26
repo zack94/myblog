@@ -11,6 +11,20 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <jsp:include page="head.jsp"/>
+<head>
+    <style>
+        #front_url{
+            font-family: TaurusNormal;
+            font-size: 22px;
+            line-height: 22px;
+            color: #777;
+            margin-left: 750px;
+            float: right;
+            height: 50px;
+            padding: 15px
+        }
+    </style>
+</head>
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -23,6 +37,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="<%=basePath%>view/admin/jsps/index.jsp">ZACK||任志洪</a>
+                <a id="front_url" href="<%=basePath%>initHomepage.action" target="_blank">博客前台</a>
             </div>
 
 
@@ -33,13 +48,13 @@
                     <li><a href="login.action" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
                 </ul>
 
-                <form action="" method="post" class="navbar-form navbar-right" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" autocomplete="off" placeholder="键入关键字搜索" maxlength="15">
-                        <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">搜索</button>
-              </span></div>
-                </form>
+                <%--<form action="" method="post" class="navbar-form navbar-right" role="search">--%>
+                    <%--<div class="input-group">--%>
+                        <%--<input type="text" class="form-control" autocomplete="off" placeholder="键入关键字搜索" maxlength="15">--%>
+                        <%--<span class="input-group-btn">--%>
+              <%--<button class="btn btn-default" type="submit">搜索</button>--%>
+              <%--</span></div>--%>
+                <%--</form>--%>
             </div>
         </div>
     </nav>

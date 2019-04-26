@@ -36,4 +36,7 @@ public interface MindService {
 
     List<Mind> subList(int pageStart, int perPageCount)throws Exception;
 
+    //修改文章的可见性
+    public void changeMindLook(String mind_look,String mind_id) throws Exception;
+
 }

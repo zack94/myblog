@@ -141,7 +141,6 @@ public class MindController {
         return picture.getPictureName();
     }
 
-
     /**
      * 初始化mind页面
      * @param request 页面请求，返回页面是域中包含Mind对象
@@ -193,4 +192,20 @@ public class MindController {
         return modelAndView;
     }
 
+    @RequestMapping("changeMindLook.action")
+    public ModelAndView changeMindLook(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String mind_look = request.getParameter("mind_look");
+        String mind_id = request.getParameter("mind_id");
+        ModelAndView modelAndView;
+        try {
+            mindService.changeMindLook(mind_look, mind_id);
+            modelAndView = queryMindInfo(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/errors.jsp");
+        }
+
+
+        return modelAndView;
+    }
 }

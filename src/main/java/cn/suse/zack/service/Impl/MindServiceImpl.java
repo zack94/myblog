@@ -54,4 +54,9 @@ public class MindServiceImpl implements MindService {
         return mindMapper.subList(pageStart, perPageCount);
 
     }
+
+    @Override
+    public void changeMindLook(String mind_look, String mind_id) throws Exception {
+        mindMapper.changeMindLook(mind_look, mind_id);
+    }
 }
