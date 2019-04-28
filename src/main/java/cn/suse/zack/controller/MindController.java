@@ -208,4 +208,55 @@ public class MindController {
 
         return modelAndView;
     }
+
+
+    //修改之前按照mind_id查询mind信息
+    @RequestMapping("queryMind.action")
+    public ModelAndView queryMind(HttpServletRequest request, HttpServletResponse response) {
+        String mind_id = request.getParameter("mind_id");
+        ModelAndView modelAndView;
+        try {
+            modelAndView = new ModelAndView("view/admin/jsps/edit_mind.jsp");
+            Mind mind = mindService.queryMindById(mind_id);
+            mind.setMind_content(mind.getMind_content().replaceAll("(\r|\n|\r\n|\n\r)", " "));
+            mind.setMind_content(mind.getMind_content().replaceAll("\"","\\\\"+"\""));
+            mind.setMind_content(mind.getMind_content().replaceAll("\'","\\\\"+"\'"));
+            modelAndView.addObject("mind", mind);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/errors.jsp");
+        }
+        return modelAndView;
+    }
+
+    //修改保存mind
+    @RequestMapping("updateMind.action")
+    public ModelAndView updateMind(HttpServletRequest request, HttpServletResponse response,Mind mind) {
+        ModelAndView modelAndView;
+        try {
+            mindService.updateMind(mind);
+            modelAndView = queryMindInfo(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/errors.jsp");
+        }
+        return modelAndView;
+    }
+
+    //逻辑删除心情
+    @RequestMapping("deleteMind.action")
+    public ModelAndView deleteMind(HttpServletRequest request, HttpServletResponse response, String mind_id) {
+        //String mind_id2= request.getParameter("mind_id");
+        ModelAndView modelAndView;
+        //System.out.println(mind_id);
+        //System.out.println(mind_id2);
+        try {
+            mindService.deleteMind(mind_id);
+            modelAndView = queryMindInfo(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/errors.jsp");
+        }
+        return modelAndView;
+    }
 }

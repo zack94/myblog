@@ -21,6 +21,7 @@
 %>
 
 <html>
+<jsp:include page="head.jsp"/>
 <head>
     <style>
         #mind_content {
@@ -41,7 +42,7 @@
 
     </style>
 </head>
-<jsp:include page="head.jsp"/>
+
 <body class="user-select">
 <section class="container-fluid">
     <jsp:include page="banner.jsp"/>
@@ -88,8 +89,8 @@
                                     </c:if>
                                 </td>
                                 <td>
-                                    <a href="<c:url value='queryArticle.action'/>?mind_id=${mind.mind_id}">修改</a>
-                                    <a href="<c:url value='deleteArticle.action'/>?mind_id=${mind.mind_id}">删除</a>
+                                    <a href="<c:url value='queryMind.action'/>?mind_id=${mind.mind_id}">修改</a>
+                                    <a href="<c:url value='deleteMind.action'/>?mind_id=${mind.mind_id}">删除</a>
                                 </td>
                         </tr>
                     </c:forEach>

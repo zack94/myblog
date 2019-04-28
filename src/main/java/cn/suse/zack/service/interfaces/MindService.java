@@ -39,4 +39,9 @@ public interface MindService {
     //修改文章的可见性
     public void changeMindLook(String mind_look,String mind_id) throws Exception;
 
+    public Mind queryMindById(String mind_id) throws Exception;
+
+    public void updateMind(Mind mind) throws Exception;
+
+    public void deleteMind(String mind_id) throws Exception;
 }

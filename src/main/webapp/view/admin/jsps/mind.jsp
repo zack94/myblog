@@ -15,19 +15,22 @@
 %>
 <!doctype html>
 <html>
+<jsp:include page="head.jsp"/>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>任志洪的个人博客</title>
-    <link rel="shortcut icon" href="<%=basePath%>view/admin/images/icon/bannerlogo.png">
+    <%--<meta charset="utf-8">--%>
+    <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
+    <%--<title>任志洪的个人博客</title>--%>
+    <%--<link rel="shortcut icon" href="<%=basePath%>view/admin/images/icon/bannerlogo.png">--%>
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/style.css">
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/font-awesome.min.css">
+    <%--<link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/bootstrap.min.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/style.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href="<%=basePath%>view/admin/css/font-awesome.min.css">--%>
 
     <script src="<%=basePath%>ueditor/ueditor.all.js"></script>
     <script src="<%=basePath%>ueditor/ueditor.config.js"></script>
     <script src="<%=basePath%>ueditor/ueditor.all.min.js"></script>
+
+    <script src="<%=basePath%>view/admin/js/getTime.js"></script>
 
 </head>
 
@@ -76,7 +79,8 @@
                                 <input type="radio" name="mind_look" value="1" />加密</p>
                             <p><label>发布于：</label>
                                 <span class="article-time-display">
-                                    <input style="border: none;" type="datetime" name="time" value="2016-01-09 17:29:37" />
+                                    <span id="timeShow" class="time1"></span>
+                                    <%--<input style="border: none;" type="datetime" name="time" value="2016-01-09 17:29:37" />--%>
                                 </span>
                             </p>
                             </div>

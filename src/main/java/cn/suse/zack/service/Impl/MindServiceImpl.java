@@ -59,4 +59,19 @@ public class MindServiceImpl implements MindService {
     public void changeMindLook(String mind_look, String mind_id) throws Exception {
         mindMapper.changeMindLook(mind_look, mind_id);
     }
+
+    @Override
+    public Mind queryMindById(String mind_id) throws Exception {
+        return mindMapper.queryMindById(mind_id);
+    }
+
+    @Override
+    public void updateMind(Mind mind) throws Exception {
+        mindMapper.updateMind(mind);
+    }
+
+    @Override
+    public void deleteMind(String mind_id) throws Exception {
+        mindMapper.deleteMind(mind_id);
+    }
 }
