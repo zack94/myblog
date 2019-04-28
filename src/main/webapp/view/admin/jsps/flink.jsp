@@ -39,12 +39,17 @@
     <div class="row">
         <jsp:include page="left_Navigation_bar.jsp"/>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
-            <form action="/Flink/checkAll" method="post">
+            <form action="" method="post">
                 <h1 class="page-header">操作</h1>
-                <ol class="breadcrumb">
-                    <li><a href="<%=basePath%>view/admin/jsps/add_flink.jsp">增加友情链接</a></li>
-                </ol>
-                <h1 class="page-header">管理 <span class="badge">1</span></h1>
+                <%--<ol class="breadcrumb">--%>
+                <%--<li>--%>
+                <button style="width: 120px;line-height: 38px;text-align: center;font-weight: bold;color: #000;border-radius: 5px;
+                                margin:0 20px 20px 0;position: relative;overflow: hidden;">
+                    <a href="<%=basePath%>view/admin/jsps/add_flink.jsp">增加友情链接</a>
+                </button>
+                <%--</li>--%>
+                <%--</ol>--%>
+                <h1 class="page-header">管理</h1>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -65,7 +70,10 @@
                                 <td class="article-title">${friendLink.link_words}</td>
                                 <td>${friendLink.link_url}</td>
                                 <td><fmt:formatDate value="${friendLink.create_time}" pattern="yyyy/MM/dd"/></td>
-                                <td><a href="update-flink.html">修改</a> <a rel="6">删除</a></td>
+                                <td>
+                                    <a href="<%=basePath%>queryFriendLinkById.action?link_id=${friendLink.link_id}">修改</a>
+                                    <a href="<%=basePath%>deleteFriendLink.action?link_id=${friendLink.link_id}">删除</a>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -23,4 +23,10 @@ public interface FriendLinkMapper {
     int getFriendLinkCount() throws Exception;
 
     List<FriendLink> subList(@Param("pageStart") int pageStart, @Param("perPageCount") int perPageCount)throws Exception;
+
+    public FriendLink queryFriendLinkById(@Param("link_id") String link_id)throws Exception;
+
+    public void updateFriendLink(FriendLink friendLink) throws Exception;
+
+    public void deleteFriendLink(@Param("link_id") String link_id) throws Exception;
 }

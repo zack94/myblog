@@ -20,4 +20,10 @@ public interface FriendLinkService {
     int getFriendLinkCount() throws Exception;
 
     List<FriendLink> subList(int pageStart, int perPageCount)throws Exception;
+
+    public FriendLink queryFriendLinkById(String link_id) throws Exception;
+
+    public void updateFriendLink(FriendLink friendLink) throws Exception;
+
+    public void deleteFriendLink(String link_id) throws Exception;
 }

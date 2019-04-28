@@ -70,4 +70,48 @@ public class FriendLinkController {
 
         return new ModelAndView("view/admin/jsps/flink.jsp");
     }
+
+    //按主键查询FriendLink
+    @RequestMapping("queryFriendLinkById.action")
+    public ModelAndView queryFriendLinkById(HttpServletResponse response, HttpServletRequest request, String link_id) {
+        //System.out.println(link_id);
+        ModelAndView modelAndView;
+        try {
+            FriendLink friendLink = sv.queryFriendLinkById(link_id);
+            modelAndView = new ModelAndView("view/admin/jsps/edit_flink.jsp");
+            modelAndView.addObject("friendLink", friendLink);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
+
+    //更新FriendLink
+    @RequestMapping("updateFriendLink.action")
+    public ModelAndView updateFriendLink(HttpServletRequest request, HttpServletResponse response, FriendLink friendLink) {
+        ModelAndView modelAndView;
+        try {
+            sv.updateFriendLink(friendLink);
+            modelAndView = queryFriendLink(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
+
+    //逻辑删除友情链接
+    @RequestMapping("deleteFriendLink.action")
+    public ModelAndView deleteFriendLink(HttpServletRequest request, HttpServletResponse response, String link_id) {
+        ModelAndView modelAndView;
+        try {
+            sv.deleteFriendLink(link_id);
+            modelAndView = queryFriendLink(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
 }

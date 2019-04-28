@@ -35,4 +35,19 @@ public class FriendLinkServiceImpl implements FriendLinkService {
     public List<FriendLink> subList(int pageStart, int perPageCount) throws Exception {
         return mapper.subList(pageStart, perPageCount);
     }
+
+    @Override
+    public FriendLink queryFriendLinkById(String link_id) throws Exception {
+        return mapper.queryFriendLinkById(link_id);
+    }
+
+    @Override
+    public void updateFriendLink(FriendLink friendLink) throws Exception {
+        mapper.updateFriendLink(friendLink);
+    }
+
+    @Override
+    public void deleteFriendLink(String link_id) throws Exception {
+        mapper.deleteFriendLink(link_id);
+    }
 }

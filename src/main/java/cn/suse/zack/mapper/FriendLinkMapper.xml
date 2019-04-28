@@ -27,6 +27,7 @@
 		SELECT
   		COUNT(*)
 		FROM `blog`.`blog_flink`
+		WHERE `blog_flink`.`del_flag`=1
 	</select>
 
 	<select id="subList" resultType="FriendLink">
@@ -39,9 +40,35 @@
 
 		FROM
 		`blog`.`blog_flink`
+		WHERE `blog_flink`.`del_flag`=1
 		ORDER BY `create_time` DESC
 		LIMIT #{pageStart}, #{perPageCount}
 	</select>
 
+	<select id="queryFriendLinkById" parameterType="String" resultType="FriendLink">
+		SELECT *
+		FROM
+		`blog`.`blog_flink`
+		WHERE `link_id` = #{link_id}
+		AND `del_flag` = 1
+	</select>
+
+	<update id="updateFriendLink" parameterType="FriendLink">
+		UPDATE `blog`.`blog_flink`
+		SET
+		`link_words` = #{link_words},
+		`link_url` = #{link_url},
+		`link_way` = #{link_way}
+		WHERE
+		`link_id` = #{link_id}
+	</update>
+
+	<update id="deleteFriendLink" parameterType="String">
+		UPDATE `blog`.`blog_flink`
+		SET
+		`del_flag` = 0
+		WHERE
+		`link_id` = #{link_id}
+	</update>
 
 </mapper>
