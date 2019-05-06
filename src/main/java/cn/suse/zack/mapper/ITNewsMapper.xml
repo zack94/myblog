@@ -27,6 +27,7 @@
 	<select id="getITNewsCount" resultType="int">
 		SELECT COUNT(*)
 		FROM `blog`.`blog_itnews`
+		WHERE `blog_itnews`.`del_Flag`=1
 	</select>
 
 
@@ -43,8 +44,41 @@
 
 		FROM
 		`blog`.`blog_itnews`
+		WHERE `blog_itnews`.`del_Flag`=1
 		ORDER BY `create_time` DESC
 		LIMIT #{pageStart}, #{perPageCount}
 	</select>
+
+	<select id="queryITNewsById" parameterType="String" resultType="ITNews">
+		SELECT
+		`news_id`,
+		`news_content`,
+		`news_url`,
+		`news_way`,
+		`create_time`
+		FROM
+		`blog`.`blog_itnews`
+		WHERE `blog_itnews`.`news_id` = #{news_id}
+	</select>
+
+	<update id="updateITNews" parameterType="ITNews">
+		UPDATE
+		`blog`.`blog_itnews`
+		SET
+		`news_content` = #{news_content} ,
+		`news_url` = #{news_url} ,
+		`news_way` = #{news_way}
+		WHERE
+		`news_id` = #{news_id}
+	</update>
+
+	<update id="deleteITNewsById" parameterType="String">
+		UPDATE
+		`blog`.`blog_itnews`
+		SET
+		`del_flag` = 0
+		WHERE
+		`news_id` = #{news_id}
+	</update>
 
 </mapper>

@@ -35,4 +35,19 @@ public class ITNewsServiceImpl implements ITNewsService {
         return mapper.subList(pageStart, perPageCount);
     }
 
+    @Override
+    public ITNews queryITNewsById(String news_id) throws Exception {
+        return mapper.queryITNewsById(news_id);
+    }
+
+    @Override
+    public void updateITNews(ITNews itNews) throws Exception {
+        mapper.updateITNews(itNews);
+    }
+
+    @Override
+    public void deleteITNewsById(String news_id) throws Exception {
+        mapper.deleteITNewsById(news_id);
+    }
+
 }

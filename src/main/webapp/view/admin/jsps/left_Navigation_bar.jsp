@@ -39,22 +39,22 @@
         <li><a href="<%=basePath%>queryMindInfo.action?page=1">心情</a></li>
         <li><a href="<%=basePath%>friendLinkPage.action?page=1">友情链接</a></li>
         <li><a href="<%=basePath%>queryITNewsPage.action?page=1">IT风向</a></li>
-        <li><a href="<%=basePath%>view/admin/jsps/leave_messages.jsp">留言</a></li>
-        <li><a href="http://changyan.kuaizhan.com/overview" target="_blank">评论</a></li>
+        <%--<li><a href="<%=basePath%>view/admin/jsps/leave_messages.jsp">留言</a></li>--%>
+        <li><a href="http://changyan.kuaizhan.com/overview" target="_blank">留言&评论</a></li>
     </ul>
-    <ul class="nav nav-sidebar">
-        <li><a href="<%=basePath%>initHomepage.action">游客浏览页</a></li>
-        <li><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">其他</a>
-        </li>
-    </ul>
-    <ul class="nav nav-sidebar">
-        <li><a class="dropdown-toggle" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<%=basePath%>initHomepage.action">游客浏览页</a>
-            <ul class="dropdown-menu" aria-labelledby="userMenu">
-                <li><a href="manage_user.jsp">管理用户</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">管理登录日志</a></li>
-            </ul>
-        </li>
-    </ul>
+    <%--<ul class="nav nav-sidebar">--%>
+        <%--<li><a href="<%=basePath%>initHomepage.action">游客浏览页</a></li>--%>
+        <%--&lt;%&ndash;<li><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true"&ndash;%&gt;--%>
+               <%--&lt;%&ndash;aria-expanded="false">其他</a>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+    <%--</ul>--%>
+    <%--<ul class="nav nav-sidebar">--%>
+        <%--<li><a class="dropdown-toggle" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<%=basePath%>initHomepage.action">游客浏览页</a>--%>
+            <%--<ul class="dropdown-menu" aria-labelledby="userMenu">--%>
+                <%--<li><a href="manage_user.jsp">管理用户</a></li>--%>
+                <%--<li role="separator" class="divider"></li>--%>
+                <%--<li><a href="#">管理登录日志</a></li>--%>
+            <%--</ul>--%>
+        <%--</li>--%>
+    <%--</ul>--%>
 </aside>

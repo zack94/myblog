@@ -20,4 +20,9 @@ public interface ITNewsService {
 
     List<ITNews> subList(int pageStart, int perPageCount)throws Exception;
 
+    public ITNews queryITNewsById(String news_id) throws Exception;
+
+    public void updateITNews(ITNews itNews) throws Exception;
+
+    public void deleteITNewsById(String news_id)throws Exception;
 }

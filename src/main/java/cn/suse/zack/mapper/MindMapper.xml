@@ -29,6 +29,7 @@
     <select id="findTenMind" resultType="Mind">
         SELECT *
         FROM blog_mind
+        WHERE blog_mind.del_flag = 1
         ORDER BY mind_date DESC
         LIMIT 10
     </select>

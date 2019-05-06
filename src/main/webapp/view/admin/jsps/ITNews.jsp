@@ -64,7 +64,9 @@
                                 <td class="article-title">${itNews.news_content}</td>
                                 <td>${itNews.news_url}</td>
                                 <td><fmt:formatDate value="${itNews.create_time}" pattern="yyyy/MM/dd"/></td>
-                                <td><a href="update-flink.html">修改</a> <a rel="6">删除</a></td>
+                                <td>
+                                    <a href="<%=basePath%>queryITNewsById.action?news_id=${itNews.news_id}">修改</a>
+                                    <a href="<%=basePath%>deleteITNewsById.action?news_id=${itNews.news_id}">删除</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -72,4 +72,47 @@ public class ITNewsController {
         return new ModelAndView("view/admin/jsps/ITNews.jsp");
     }
 
+
+    @RequestMapping("queryITNewsById.action")
+    public ModelAndView queryITNewsById(HttpServletResponse response, HttpServletRequest request) {
+        String news_id = request.getParameter("news_id");
+        ModelAndView modelAndView;
+        try {
+            modelAndView = new ModelAndView("view/admin/jsps/update_ITNews.jsp");
+            modelAndView.addObject("ITNews", sv.queryITNewsById(news_id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("updateITNews.action")
+    public ModelAndView updateITNews(HttpServletRequest request, HttpServletResponse response, ITNews itNews) {
+        ModelAndView modelAndView;
+        try {
+            sv.updateITNews(itNews);
+            modelAndView = queryITNewsInfo(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("deleteITNewsById.action")
+    public ModelAndView deleteITNewsById(HttpServletResponse response, HttpServletRequest request) {
+        ModelAndView modelAndView;
+        String news_id = request.getParameter("news_id");
+        try {
+            sv.deleteITNewsById(news_id);
+            modelAndView = queryITNewsInfo(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
+
 }

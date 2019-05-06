@@ -22,4 +22,9 @@ public interface ITNewsMapper {
 
     List<ITNews> subList(@Param("pageStart") int pageStart, @Param("perPageCount") int perPageCount)throws Exception;
 
+    public ITNews queryITNewsById(@Param("news_id") String news_id) throws Exception;
+
+    public void updateITNews(ITNews itNews) throws Exception;
+
+    public void deleteITNewsById(@Param("news_id") String news_id) throws Exception;
 }
