@@ -112,4 +112,17 @@ public class AdminArticleController {
         return modelAndView;
     }
 
+    //新增文章查询所有标签
+    @RequestMapping("addArticlePer.action")
+    public ModelAndView queryAllLabel(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView;
+        try {
+            modelAndView = new ModelAndView("view/admin/jsps/add_article.jsp");
+            modelAndView.addObject("labelList",articleService.queryAllLabel());
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+        }
+        return modelAndView;
+    }
 }

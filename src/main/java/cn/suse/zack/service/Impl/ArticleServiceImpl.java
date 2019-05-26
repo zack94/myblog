@@ -2,6 +2,7 @@ package cn.suse.zack.service.Impl;
 
 import cn.suse.zack.mapper.ArticleMapper;
 import cn.suse.zack.pojo.Article;
+import cn.suse.zack.pojo.Label;
 import cn.suse.zack.service.interfaces.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -74,6 +75,11 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void deleteArticle(String article_id) throws Exception {
         articleMapper.deleteArticle(article_id);
+    }
+
+    @Override
+    public List<Label> queryAllLabel() throws Exception{
+        return articleMapper.queryAllLabel();
     }
 
 

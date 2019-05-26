@@ -92,4 +92,11 @@
         `article_id` = #{article_id}
     </update>
 
+	<select id="queryAllLabel" resultType="Label">
+		SELECT 	`article_label`,
+		`article_name`
+		FROM
+		`blog`.`blog_label`
+	</select>
+
 </mapper>

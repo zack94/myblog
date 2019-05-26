@@ -2,6 +2,7 @@ package cn.suse.zack.service.interfaces;
 
 import cn.suse.zack.pojo.Article;
 import cn.suse.zack.pojo.ArticleExtend;
+import cn.suse.zack.pojo.Label;
 import net.sf.ehcache.store.disk.ods.AATreeSet;
 import org.apache.tools.ant.taskdefs.optional.extension.LibFileSet;
 import org.springframework.stereotype.Service;
@@ -58,4 +59,6 @@ public interface ArticleService {
 
     public void deleteArticle(String article_id) throws Exception;
 
+    //查询所有标签
+    public List<Label> queryAllLabel() throws Exception;
 }

@@ -33,18 +33,21 @@ public class ArticleController {
     private FriendLinkService friendLinkService;
     @Autowired
     private ITNewsService ITNewsService;
+    @Autowired
+    AdminArticleController adminArticleController;
 
 
     //创建新的文章,创建成功返回到首页查看
     @RequestMapping("addArticle.action")
-    public String addArticle(HttpServletRequest request,Article article, MultipartFile pictureFile,Picture picture){
+    public ModelAndView addArticle(HttpServletRequest request,HttpServletResponse response,Article article, MultipartFile pictureFile,Picture picture) throws Exception{
         //文章的配图的存储
         //获取项目的运行真是路径,动态的可以随项目的运行路径发生变化的,如果不存在则会新建一个
         String pictureRealPath = request.getSession().getServletContext().getRealPath("/picture/");
         //相当于获取到了本项目下的picture文件夹的路径了
 
+        ModelAndView modelAndView;
         //没有选择图片，则默认配图
-        if (picture.getPictureName()==null) {
+        if (pictureFile.getName()==null) {
             picture.setPictureName("articleDefaultImage.jpg");
             article.setArticle_picture(picture.getPictureName());
             article.setArticle_createtime(new Date());
@@ -54,9 +57,11 @@ public class ArticleController {
                 articleService.addArticle(article);
             } catch (Exception e) {
                 e.printStackTrace();
-                return "view/admin/info/errors.jsp";
+                modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+                return modelAndView;
             }
-            return "view/admin/jsps/article.jsp";
+            modelAndView = new ModelAndView("view/admin/jsps/article.jsp");
+            return modelAndView;
         }
 
         // 获取上传图片的源文件名
@@ -82,13 +87,16 @@ public class ArticleController {
                 pictureUpload(pictureRealPath, picture.getPictureName(), pictureFile);
             } catch (Exception e) {
                 e.printStackTrace();
-                return "/view/admin/info/errors.jsp";
+                modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+                return modelAndView;
             }
-            return "/view/admin/jsps/index.jsp";
+            return adminArticleController.articleInfo(request,response);
 
         } else {
             //不支持该种文件
-            return "/view/admin/info/errors.jsp";
+            modelAndView = new ModelAndView("view/admin/info/errors.jsp");
+
+            return modelAndView;
         }
 
     }

@@ -1,6 +1,7 @@
 package cn.suse.zack.mapper;
 
 import cn.suse.zack.pojo.Article;
+import cn.suse.zack.pojo.Label;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -56,4 +57,6 @@ public interface ArticleMapper {
 
     public void deleteArticle(@Param("article_id")String article_id) throws Exception;
 
+    //查询所有标签
+    public List<Label> queryAllLabel() throws Exception;
 }

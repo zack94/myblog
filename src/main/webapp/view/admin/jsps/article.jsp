@@ -26,7 +26,7 @@
         <jsp:include page="left_Navigation_bar.jsp"/>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
                 <h1 class="page-header">文章管理</h1>
-                <a href="<%=basePath%>view/admin/jsps/add_article.jsp">
+                <a href="addArticlePer.action">
                         <button style="width: 120px;line-height: 38px;text-align: center;font-weight: bold;color: #000;border-radius: 5px;
                                 margin:0 20px 20px 0;position: relative;overflow: hidden;">新增文章
                         </button>

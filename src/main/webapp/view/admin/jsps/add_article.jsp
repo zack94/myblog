@@ -6,6 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--导入c标签--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--导入format标签--%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -77,12 +83,19 @@
                         <div class="add-article-box">
                             <h2 class="add-article-box-title"><span>标签</span></h2>
                             <div class="add-article-box-content">
-                                <input type="text" class="form-control" placeholder="输入新标签" name="article_label"
-                                       autocomplete="off">
-                                <span class="prompt-text">多个标签请用英文逗号,隔开</span></div>
+
+                                <select name="article_label" id="article_label">
+                                    <c:forEach items="${requestScope.labelList}" var="label">
+                                    <option value="${label.article_name}">${label.article_name}</option>
+                                    </c:forEach>
+                                    <%--<input type="text" class="form-control" placeholder="输入新标签" name="article_label"--%>
+                                       <%--autocomplete="off">--%>
+                                <%--<span class="prompt-text">多个标签请用英文逗号,隔开</span></div>--%>
+                                </select>
+                            </div>
                         </div>
                         <div class="add-article-box">
-                            <h2 class="add-article-box-title"><span>标题图片</span></h2>
+                            <h2 class="add-article-box-title"><span>文章配图</span></h2>
                             <div class="add-article-box-content">
                                 <input type="file" placeholder="点击按钮选择图片" id="pictureUpload" name="pictureFile">
                             </div>
@@ -94,7 +107,7 @@
                                 <button class="btn btn-primary" type="submit">发布</button>
                             </div>
                         </div>
-                    </div>
+                        </div>
                 </form>
             </div>
         </div>
