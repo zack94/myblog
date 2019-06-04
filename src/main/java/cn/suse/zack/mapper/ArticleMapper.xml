@@ -78,8 +78,7 @@
 		SET
 		`article_label` = #{article_label},
 		`article_title` = #{article_title},
-		`article_content` = #{article_content},
-		`article_picture` = #{article_picture}
+		`article_content` = #{article_content}
 		WHERE
 		`article_id` = #{article_id}
 	</update>

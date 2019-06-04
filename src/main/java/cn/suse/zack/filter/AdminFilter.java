@@ -29,10 +29,13 @@ public class AdminFilter implements Filter {
         ///***************************************************开发环境注释掉拦截器*****************************************************************
         Admin admin = (Admin) request.getSession().getAttribute("admin");
         //session域中没有对象，则没有登陆，跳转到登陆页面
-        if (admin==null){
-            response.sendRedirect("../admin_login.jsp");
+        if (admin == null) {
+            //response.sendRedirect("admin_login.jsp");
+            request.getRequestDispatcher("../admin_login.jsp").forward(request, response);
+            //chain.doFilter(request, response);
+            //return;
         }
-         //*****************************************************************************************************************/
+        //*****************************************************************************************************************
         chain.doFilter(request, response);
     }
 
