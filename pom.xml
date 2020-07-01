@@ -20,7 +20,7 @@
         <!--mybatis版本3.3.0-->
         <mybatis.version>3.3.0</mybatis.version>
         <!--数据库连接版本5.1.21-->
-        <mysql-connector-java.version>5.1.21</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
     </properties>
     <dependencies>
         <dependency>
