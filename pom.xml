@@ -105,7 +105,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.6</version>
+            <version>2.7</version>
         </dependency>
         <!--commons-logging是Apache commons类库中的一员。-->
         <!--Apache commons类库是一个通用的类库，提供了基础的功能，-->
