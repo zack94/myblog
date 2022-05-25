@@ -16,7 +16,7 @@
         <!--mybatis-spring整合版本1.3.0-->
         <mybatis-spring.version>1.3.0</mybatis-spring.version>
         <!--spring版本4.2.0-->
-        <springframework.version>4.2.0.RELEASE</springframework.version>
+        <springframework.version>5.2.22.RELEASE</springframework.version>
         <!--mybatis版本3.3.0-->
         <mybatis.version>3.3.0</mybatis.version>
         <!--数据库连接版本5.1.21-->
